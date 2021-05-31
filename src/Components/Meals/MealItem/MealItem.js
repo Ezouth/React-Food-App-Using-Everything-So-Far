@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classes from './MealItem.module.css';
 import MealItemForm from './MealItemForm';
 
 const MealItem = (props) => {
+
+    const cartCtx = useContext(CartContext); 
     const price = `$${props.price.toFixed(2)}`;
+
+    const addItemToCartHandler = (amount) => {
+        cartCtx.addItmes({
+            id: props.id,
+            name: props.name,
+            amount: amount,
+            price: props.price
+        })
+    };
+
+
     return(
         <li className={classes.meal}>
             <div>
                 <h3>{props.name}</h3>
-                <div>{props.description}</div>
-                <div>{props.price}</div>
+                <div className={classes.description}>{props.description}</div>
+                <div className={classes.price}> </div> 
             </div>
             <div>
                 <MealItemForm id={props.id}></MealItemForm>

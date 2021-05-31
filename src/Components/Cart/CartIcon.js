@@ -1,6 +1,3 @@
-import React from 'react';
-import classes from './CartIcon.module.css';
-
 const CartIcon = () => {
     return (
       <svg
